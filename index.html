@@ -1,1 +1,1325 @@
-nwacybercab.com
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roboride — Northwest Arkansas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpg" href="image/favicon.jpg">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyan: #ffffff;
+    --cyan-dim: #cccccc;
+    --cyan-glow: rgba(255,255,255,0.07);
+    --dark: #0a0a0a;
+    --dark2: #111111;
+    --dark3: #171717;
+    --card: #161616;
+    --border: rgba(255,255,255,0.1);
+    --text: #e5e5e5;
+    --muted: #6b6b6b;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .logo span { color: var(--cyan); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--cyan); }
+
+  .nav-cta {
+    background: var(--white);
+    color: #0a0a0a !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2rem;
+    font-weight: 500 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover { background: #e0e0e0 !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+  }
+
+  .hero-orb {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,229,255,0.08);
+    border: 0.5px solid var(--border);
+    border-radius: 2rem;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--cyan);
+  }
+
+  .hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn-primary {
+    background: var(--cyan);
+    color: var(--dark);
+    border: none;
+    padding: 0.85rem 2.2rem;
+    border-radius: 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #e0e0e0; transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 0.5px solid rgba(255,255,255,0.2);
+    padding: 0.85rem 2.2rem;
+    border-radius: 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); }
+    100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+  }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--dark2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-item {}
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cyan);
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    color: var(--cyan);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title em {
+    font-style: normal;
+    color: var(--cyan);
+  }
+
+  .section-body {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--cyan-glow);
+    border: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--cyan);
+    margin-top: 0.1rem;
+  }
+
+  .step-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .step-content p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .car-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .car-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 0.5px solid var(--border);
+    animation: spin-slow linear infinite;
+  }
+
+  .car-ring-1 { width: 340px; height: 340px; animation-duration: 20s; }
+  .car-ring-2 { width: 260px; height: 260px; animation-duration: 15s; animation-direction: reverse; }
+  .car-ring-3 { width: 180px; height: 180px; animation-duration: 10s; }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .ring-dot {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    top: -3px; left: calc(50% - 3px);
+  }
+
+  .car-icon-wrap {
+    position: relative;
+    z-index: 2;
+    width: 160px; height: 160px;
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .car-svg {
+    width: 100px;
+    height: auto;
+  }
+
+  /* ── SERVICE CARDS ── */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover { border-color: rgba(0,229,255,0.35); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+
+  .card-icon {
+    width: 48px; height: 48px;
+    background: var(--cyan-glow);
+    border: 0.5px solid var(--border);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-icon svg {
+    width: 24px; height: 24px;
+    stroke: var(--cyan);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── NWA SECTION ── */
+  .nwa-section {
+    background: var(--dark2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 6rem 0;
+  }
+
+  .nwa-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .nwa-map {
+    position: relative;
+    aspect-ratio: 1;
+    background: var(--card);
+    border-radius: 1rem;
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .map-cities {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+  }
+
+  .city-dot {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .city-dot-inner {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 0 4px rgba(0,229,255,0.15), 0 0 0 8px rgba(0,229,255,0.05);
+  }
+
+  .city-name {
+    font-size: 0.7rem;
+    color: var(--cyan);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .city-fayetteville { top: 63%; left: 43%; }
+  .city-bentonville  { top: 20%; left: 35%; }
+  .city-rogers       { top: 30%; left: 52%; }
+  .city-springdale   { top: 47%; left: 50%; }
+  .city-siloam       { top: 44%; left: 15%; }
+  .city-eureka       { top: 13%; left: 82%; }
+  .city-farmington   { top: 68%; left: 32%; }
+
+  .map-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .nwa-cities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .city-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+
+  .city-chip-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pricing-card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .pricing-card.featured {
+    border-color: var(--cyan);
+    background: linear-gradient(135deg, var(--card) 0%, rgba(255,255,255,0.04) 100%);
+  }
+
+  .pricing-card:hover { transform: translateY(-3px); }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    color: #0a0a0a;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.9rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+  }
+
+  .pricing-tier {
+    font-size: 0.75rem;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .pricing-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-price sup {
+    font-size: 1.2rem;
+    vertical-align: top;
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
+
+  .pricing-per {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-divider {
+    height: 0.5px;
+    background: var(--border);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--text);
+  }
+
+  .pricing-features li::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+  }
+
+  /* ── TRUST ── */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+ 
+  .trust-safety {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+  }
+   
+  .trust-card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .trust-icon {
+    width: 52px; height: 52px;
+    background: var(--cyan-glow);
+    border: 0.5px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .trust-icon svg {
+    width: 22px; height: 22px;
+    stroke: var(--cyan);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .trust-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .trust-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    text-align: center;
+    padding: 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-glow {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-section p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 460px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark2);
+    border-top: 0.5px solid var(--border);
+    padding: 3rem 4rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand p {
+    color: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    margin-top: 0.75rem;
+    max-width: 260px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--cyan); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ── SIGN UP FORM ── */
+  .signup-form {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .signup-form input {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 2rem;
+    padding: 0.8rem 1.5rem;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    width: 260px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .signup-form input::placeholder { color: var(--muted); }
+  .signup-form input:focus { border-color: var(--cyan); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 2rem 1.5rem; }
+    .how-layout { grid-template-columns: 1fr; }
+    .car-visual { display: none; }
+    .service-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .nwa-inner { grid-template-columns: 1fr; padding: 0 1.5rem; gap: 2.5rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .cta-section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Robo<span>ride</span></div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#signup" class="nav-cta">Join Waitlist</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Now Launching — Northwest Arkansas
+  </div>
+
+  <h1>The Future of<br>Getting Around<br><em>NWA.</em></h1>
+
+  <p>Autonomous Tesla Cybercab rides across Fayetteville, Bentonville, Rogers, and beyond. No driver. No surge pricing. Always on.</p>
+
+  <div class="hero-actions">
+    <a href="#signup" class="btn-primary">Join the Waitlist</a>
+    <a href="#how" class="btn-outline">See How It Works</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">6+</div>
+    <div class="stat-label">Cities Covered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">24/7</div>
+    <div class="stat-label">Always Available</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">$0</div>
+    <div class="stat-label">Surge Pricing</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">100%</div>
+    <div class="stat-label">Electric Fleet</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="how-layout">
+    <div>
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title">Ride in three<br><em>simple steps.</em></h2>
+      <p class="section-body">Roboride makes getting around NWA effortless. Open the app, request your Cybercab, and go. No tip required — not even a word.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>Open the app & set your destination</h4>
+            <p>Enter where you're going. The app shows your nearest Cybercab and arrival time in real time.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>Your Cybercab arrives</h4>
+            <p>A sleek Tesla Cybercab pulls up to your location. Confirm your ride via the app and step inside.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>Sit back and arrive</h4>
+            <p>Full autonomous navigation takes you to your destination safely. Track every mile on your phone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-visual">
+      <div class="car-ring car-ring-1"><div class="ring-dot"></div></div>
+      <div class="car-ring car-ring-2"><div class="ring-dot"></div></div>
+      <div class="car-ring car-ring-3"><div class="ring-dot"></div></div>
+      <div class="car-icon-wrap">
+        <svg class="car-svg" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cybercab silhouette -->
+          <rect x="5" y="28" width="90" height="14" rx="4" fill="#161616" stroke="#ffffff" stroke-width="0.8"/>
+          <path d="M15 28 C18 18 25 14 50 13 C75 14 82 18 85 28Z" fill="#161616" stroke="#ffffff" stroke-width="0.8"/>
+          <circle cx="22" cy="43" r="6" fill="#0a0a0a" stroke="#ffffff" stroke-width="0.8"/>
+          <circle cx="22" cy="43" r="2.5" fill="#ffffff"/>
+          <circle cx="78" cy="43" r="6" fill="#0a0a0a" stroke="#ffffff" stroke-width="0.8"/>
+          <circle cx="78" cy="43" r="2.5" fill="#ffffff"/>
+          <!-- windows -->
+          <path d="M22 27 C24 21 30 18 48 18 L52 27Z" fill="#ffffff" fill-opacity="0.12"/>
+          <path d="M52 27 L54 18 C68 18 74 21 78 27Z" fill="#ffffff" fill-opacity="0.12"/>
+          <!-- headlight -->
+          <rect x="86" y="30" width="6" height="3" rx="1.5" fill="#ffffff" fill-opacity="0.5"/>
+          <rect x="8" y="30" width="6" height="3" rx="1.5" fill="#ffffff" fill-opacity="0.25"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="padding-top: 0;">
+  <div class="section-tag">Services</div>
+  <h2 class="section-title">Built for every<br><em>NWA journey.</em></h2>
+
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      </div>
+      <h3>Everyday Rides</h3>
+      <p>From Fayetteville neighborhoods to Bentonville's Crystal Bridges — get where you need to go quickly and affordably.</p>
+    </div>
+    <div class="service-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </div>
+      <h3>Corporate Accounts</h3>
+      <p>Seamless employee transport across the Walmart and Tysons campuses. Centralized billing, custom pickup zones, full reporting.</p>
+    </div>
+    <div class="service-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      </div>
+      <h3>Scheduled Rides</h3>
+      <p>Book up to a week in advance. Early morning airport runs to XNA, Razorback games, late-night returns — always on time.</p>
+    </div>
+    <div class="service-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </div>
+      <h3>Event Shuttles</h3>
+      <p>Coordinated transport for Walmart AMP concerts, Bikes Blues & BBQ, and Razorback games. Group bookings available.</p>
+    </div>
+    <div class="service-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </div>
+      <h3>Night Owl Mode</h3>
+      <p>Safe, autonomous rides from Dickson Street, Bentonville Square, or Rogers 9 PM–4 AM, every night of the week.</p>
+    </div>
+    <div class="service-card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      </div>
+      <h3>Accessibility Rides</h3>
+      <p>Wheelchair-accessible Cybercabs available on request. Low-step entry, ample cabin space, no driver interaction needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NWA COVERAGE -->
+<div class="nwa-section" id="coverage">
+  <div class="nwa-inner">
+    <div>
+      <div class="section-tag">Coverage Area</div>
+      <h2 class="section-title">Rooted in the<br><em>Ozarks.</em></h2>
+      <p class="section-body">Roboride is built for Northwest Arkansas — from the trails of Bentonville to the University of Arkansas campus in Fayetteville. We're expanding city by city.</p>
+
+      <div class="nwa-cities">
+        <div class="city-chip"><div class="city-chip-dot"></div>Fayetteville</div>
+        <div class="city-chip"><div class="city-chip-dot"></div>Bentonville</div>
+        <div class="city-chip"><div class="city-chip-dot"></div>Rogers</div>
+        <div class="city-chip"><div class="city-chip-dot"></div>Springdale</div>
+        <div class="city-chip"><div class="city-chip-dot"></div>Siloam Springs</div>
+        <div class="city-chip"><div class="city-chip-dot"></div>Eureka Springs*</div>
+        <div class="city-chip"><div class="city-chip-dot"></div>Farmington</div>
+      </div>
+      <p style="font-size:0.75rem; color: var(--muted); margin-top: 0.75rem;">* Coming soon</p>
+    </div>
+
+    <div class="nwa-map">
+      <div class="map-grid"></div>
+      <div class="map-cities">
+        <div class="city-dot city-fayetteville">
+          <div class="city-dot-inner" style="opacity:0.4;"></div>
+          <span class="city-name" style=opacity:0.4>Fayetteville</span>
+        </div>
+        <div class="city-dot city-bentonville">
+          <div class="city-dot-inner" style="opacity:0.4;"></div>
+          <span class="city-name" style=opacity:0.4>Bentonville</span>
+        </div>
+        <div class="city-dot city-rogers">
+          <div class="city-dot-inner" style="opacity:0.4;"></div>
+          <span class="city-name" style=opacity:0.4>Rogers</span>
+        </div>
+        <div class="city-dot city-springdale">
+          <div class="city-dot-inner" style="opacity:0.4;"></div>
+          <span class="city-name" style=opacity:0.4>Springdale</span>
+        </div>
+        <div class="city-dot city-siloam">
+          <div class="city-dot-inner" style="opacity:0.4;"></div>
+          <span class="city-name" style=opacity:0.4>Siloam Springs</span>
+        </div>
+        <div class="city-dot city-eureka">
+          <div class="city-dot-inner" style="opacity:0.4;"></div>
+          <span class="city-name" style="opacity:0.4;">Eureka Springs</span>
+        </div>
+        <div class="city-dot city-farmington">
+         <div class="city-dot-inner" style="opacity:0.4;"></div>
+         <span class="city-name" style=opacity:0.4;">Farmington</span>
+        </div>
+      </div>
+      <span class="map-label">Northwest Arkansas Region</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag">Pricing</div>
+  <h2 class="section-title">Simple, <em>honest</em> pricing.</h2>
+  <p class="section-body">No surge pricing. No tips. No surprises. Just a flat, fair rate to get you where you're going.</p>
+  <h3 class="section-tag">To be determined*</h3>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">Standard</div>
+      <div class="pricing-price"><sup>$</sup>1.20</div>
+      <div class="pricing-per">per mile + $1.50 base</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Single rider</li>
+        <li>On-demand pickup</li>
+        <li>Onboard Wi-Fi</li>
+        <li>Real-time tracking</li>
+      </ul>
+      <a href="#signup" class="btn-outline" style="width: 100%; text-align: center; display: block;">Get Started</a>
+    </div>
+
+    <div class="pricing-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="pricing-tier">Roboride+</div>
+      <div class="pricing-price"><sup>$</sup>49</div>
+      <div class="pricing-per">per month, 60 miles included</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>60 miles / month included</li>
+        <li>Priority matching</li>
+        <li>Scheduled rides</li>
+        <li>$0.90/mi after 60 miles</li>
+        <li>Early access to new features</li>
+      </ul>
+      <a href="#signup" class="btn-primary" style="width: 100%; text-align: center; display: block;">Join Waitlist</a>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-tier">Business</div>
+      <div class="pricing-price"><sup>$</sup>0.85</div>
+      <div class="pricing-per">per mile, 500 mi minimum</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Multi-rider accounts</li>
+        <li>Centralized billing</li>
+        <li>Custom pickup zones</li>
+        <li>Monthly reporting</li>
+        <li>Dedicated support</li>
+      </ul>
+      <a href="#signup" class="btn-outline" style="width: 100%; text-align: center; display: block;">Contact Sales</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section style="padding-top: 0;">
+  <div class="section-tag">Why Roboride</div>
+  <h2 class="section-title">Safety-first, <em>always.</em></h2>
+     <!-- Tesla FSD Safety Section -->
+           <section style="
+              background: #111;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 40px 20px;
+            ">
+             <img
+               src="image/safety.jpg"
+               alt="Tesla FSD Safety Chart"
+               style="
+                 max-width: 100%;
+                 width: 900px;
+                 border-radius: 12px;
+                 background: #292929;
+                 padding: 20px;"
+             />
+           </section>
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <h4>Tesla FSD Safety</h4>
+      <p>Powered by Tesla's Full Self-Driving software with billions of real-world miles of training data.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+      </div>
+      <h4>Live Monitoring</h4>
+      <p>Every ride is monitored 24/7 by our operations center. Help is always one tap away.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <h4>100% Electric</h4>
+      <p>Zero emissions across every mile. Better for NWA's air, trails, and future — guilt-free rides every time.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      </div>
+      <h4>Private & Secure</h4>
+      <p>Your trips, location, and payment data are never sold. End-to-end encrypted and stored on U.S. servers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SIGNUP -->
+<div class="cta-section" id="signup">
+  <div class="cta-glow"></div>
+  <div class="section-tag">Get Early Access</div>
+  <h2>Ride the future<br>of <em style="color:var(--white)">Northwest Arkansas.</em></h2>
+  <p>Join the waitlist and be first to ride when Roboride launches in your city.</p>
+
+  <div class="signup-form">
+    <input type="email" placeholder="josephbowers18@email.com">
+    <a href="#" class="btn-primary" onclick="this.textContent='You\'re on the list! 🎉'; return false;">Join Waitlist</a>
+  </div>
+  <p style="font-size: 0.78rem; color: var(--muted); margin-top: 1rem;">No spam. Unsubscribe anytime. We'll only email you when it matters.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Robo<span>ride</span></div>
+      <p>Autonomous Tesla Cybercab rides across Northwest Arkansas. The future of getting around NWA — clean, safe, and always available.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Rides</h5>
+      <ul>
+        <li><a href="#">Book a Ride</a></li>
+        <li><a href="#">Schedule</a></li>
+        <li><a href="#">Corporate</a></li>
+        <li><a href="#">Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Safety</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Roboride NWA. All rights reserved.</span>
+    <span>Fayetteville, Arkansas 🌲</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target && !a.classList.contains('btn-primary') && !a.classList.contains('btn-outline')) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Nav background on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(10,10,10,0.98)'
+      : 'rgba(10,10,10,0.88)';
+  });
+
+  // Animate stats counter
+  const statNums = document.querySelectorAll('.stat-number');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeUp 0.6s ease both';
+      }
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(el => observer.observe(el));
+</script>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9947110311101693"
+     crossorigin="anonymous"></script>
+</body>
+</html>
